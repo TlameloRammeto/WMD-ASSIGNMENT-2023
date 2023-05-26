@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Sen:wght@400;700;800&display=swap" 
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/LOGO OG.jpg">
+    <title>WarnerBros.com</title>
+</head>
+  <title>TV Shows</title>
+  <style>
+    /* CSS styles for the TV shows page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      margin-bottom: 20px;
+    }
+    
+    .category {
+      margin-bottom: 30px;
+    }
+    
+    .category h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .tv-shows {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 20px;
+    }
+    
+    .tv-show {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    
+    .tv-show img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    
+    .tv-show h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    
+    .tv-show p {
+      margin: 0;
+    }
+    
+    .tv-show-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .tv-show {
+      width: calc(33.33% - 20px); /* Adjust this value based on the desired number of TV shows per row */
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container">
+                    <h1 class="logo">Warner Bros</h1>
+                </div>
+                <div class="menu-container">
+                    <ul class="menu-list">
+                        <li class="menu-list-item active"><a href="index.html">Home</a></li>
+                        <li class="menu-list-item"><a href="Movies.html">Movies</a></li>
+                        <li class="menu-list-item"><a href="TV-Shows.html">TV-Shows</a></li>
+                        <li class="menu-list-item"><a href="Games & Apps.html">Games & Apps</a></li>
+                        <li class="menu-list-item"><a href="Collections.html">Collections</a></li>
+                        <li class="menu-list-item"><a href="Feedback.html">Feedback</a></li>
+                    </ul>
+                </div>
+            </header>
+    <div class="sidebar"></div>
+        <div class="container">
+            <div class="content-container">
+    
+                <h1>TV Shows</h1>
+  
+                <div class="category">
+                  <h2>Action</h2>
+                  <div class="tv-shows" id="action-tv-shows">
+                    <img src="images/1.jpg" alt="TV Show">
+                    <!-- Dynamic content will be loaded here -->
+                  </div>
+                </div>
+                
+                <div class="category">
+                  <h2>Drama</h2>
+                  <div class="tv-shows" id="drama-tv-shows">
+                    <img src="images/10.jpg" alt="TV Show">
+                    <!-- Dynamic content will be loaded here -->
+                  </div>
+                </div>
+                
+                <script>
+                  // Simulated TV show data
+                  var tvShows = [
+                    {
+                      genre: "Action",
+                      image: "images/10.jpg",
+                      title: "TV Show 1",
+                      description: "Description of TV Show 1."
+                    },
+                    {
+                      genre: "Action",
+                      image: "images/1.jpg",
+                      title: "TV Show 2",
+                      description: "Description of TV Show 2."
+                    },
+                    {
+                      genre: "Drama",
+                      image: "images/10.jpg",
+                      title: "TV Show 3",
+                      description: "Description of TV Show 3."
+                    },
+                    {
+                      genre: "Drama",
+                      image: "images/12.jpg",
+                      title: "TV Show 4",
+                      description: "Description of TV Show 4."
+                    }
+                    {
+                      genre: "Drama",
+                      image: "images/13.jpg",
+                      title: "TV Show 5",
+                      description: "Description of TV Show 5."
+                    }
+                    {
+                      genre: "Horro",
+                      image: "images/2.jpg",
+                      title: "TV Show 6",
+                      description: "Description of TV Show 6."
+                    }
+                    // Add more TV shows here
+                  ];
+                  
+                  // Function to generate TV show HTML
+                  function generateTVShowHTML(tvShow) {
+                    var tvShowHTML = `
+                      <div class="tv-show">
+                        <img src="${tvShow.image}" alt="TV Show">
+                        <h3>${tvShow.title}</h3>
+                        <p>${tvShow.description}</p>
+                      </div>
+                    `;
+                    return tvShowHTML;
+                  }
+                  
+                  // Function to load TV shows based on genre
+                  function loadTVShowsByGenre(genre) {
+                    var tvShowsContainer = document.getElementById(genre.toLowerCase() + "-tv-shows");
+                    var filteredTVShows = tvShows.filter(function(tvShow) {
+                      return tvShow.genre === genre;
+                    });
+                    var tvShowsHTML = filteredTVShows.map(function(tvShow) {
+                      return generateTVShowHTML(tvShow);
+                    }).join("");
+
+                    tvShowsContainer.innerHTML = tvShowsHTML;
+            }
+    
+    // Load TV shows for each category
+    loadTVShowsByGenre("Action");
+    loadTVShowsByGenre("Drama");
+  </script>
+</body>
+</html>
